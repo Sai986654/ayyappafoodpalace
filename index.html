@@ -1,23 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayyappa Food Palace</title>
-    <!-- Add your beautiful background color -->
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #b4763d; /* Choose your desired background color */
+            background-color: #ffcccb; /* Choose your desired background color */
             text-align: center;
         }
 
         /* Add more styles for header, navigation, content, etc. */
 
         /* Style for the food menu */
+        .menu-category {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
         .food-menu {
             display: flex;
             flex-wrap: wrap;
@@ -30,6 +34,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             max-width: 200px;
+            display: none; /* Initially hide all food items */
         }
 
         /* Style for the photo gallery */
@@ -70,11 +75,21 @@
     <!-- Food Menu Section -->
     <section id="menu">
         <h2>Menu</h2>
-        <div class="food-menu">
+        <div class="menu-category" onclick="toggleCategory('dosas')">Dosas</div>
+        <div class="food-menu dosas">
             <!-- Animated food menu items go here -->
-            <div class="food-item">Plain Dosa</div>
-            <div class="food-item">Onion Dosa</div>
-            <div class="food-item">Kaaram Dosa</div>
+            <div class="food-item">Plain Dosa - ₹50.00</div>
+            <div class="food-item">Onion Dosa - ₹60.00</div>
+            <div class="food-item">Kaaram Dosa - ₹70.00</div>
+            <!-- Add more dosa items as needed -->
+        </div>
+
+        <div class="menu-category" onclick="toggleCategory('other')">Other</div>
+        <div class="food-menu other">
+            <!-- Animated food menu items go here -->
+            <div class="food-item">Item A - ₹80.00</div>
+            <div class="food-item">Item B - ₹90.00</div>
+            <div class="food-item">Item C - ₹100.00</div>
             <!-- Add more items as needed -->
         </div>
     </section>
@@ -117,6 +132,23 @@
     <footer>
         <p>&copy; 2023 Ayyappa Food Palace. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleCategory(category) {
+            // Hide all food items
+            const allFoodItems = document.querySelectorAll('.food-item');
+            allFoodItems.forEach(item => {
+                item.style.display = 'none';
+            });
+
+            // Show food items in the selected category
+            const selectedCategory = document.querySelector(`.food-menu.${category}`);
+            const itemsInCategory = selectedCategory.querySelectorAll('.food-item');
+            itemsInCategory.forEach(item => {
+                item.style.display = 'block';
+            });
+        }
+    </script>
 
 </body>
 
