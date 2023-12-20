@@ -1,1 +1,116 @@
-<h1>hi</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Food Truck Name</title>
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        /* Add more styles for header, navigation, content, etc. */
+
+        /* Style for the food menu */
+        .food-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .food-item {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 200px;
+        }
+
+        /* Style for the photo gallery */
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            margin: 10px;
+        }
+
+            .gallery-item img {
+                max-width: 100%;
+                border-radius: 5px;
+            }
+
+        /* Style for the order form */
+        #order-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Your Food Truck Name</h1>
+        <p>Serving Delicious Food On Wheels</p>
+    </header>
+
+    <!-- Food Menu Section -->
+    <section id="menu">
+        <h2>Menu</h2>
+        <div class="food-menu">
+            <!-- Animated food menu items go here -->
+            <div class="food-item">Item 1</div>
+            <div class="food-item">Item 2</div>
+            <div class="food-item">Item 3</div>
+            <!-- Add more items as needed -->
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <h2>Our Location</h2>
+        <p>Add your location details and map here.</p>
+    </section>
+
+    <!-- Contact and Order Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Add your contact information here.</p>
+        <!-- Order Form -->
+        <form id="order-form" action="/process-order" method="post">
+            <label for="order">Place Your Order:</label>
+            <textarea id="order" name="order" rows="4" cols="50"></textarea>
+            <br>
+            <!-- Payment placeholder -->
+            <label for="payment">Payment Details:</label>
+            <input type="text" id="payment" name="payment" placeholder="Enter payment details">
+            <br>
+            <button type="submit">Submit Order</button>
+        </form>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery">
+        <h2>Photo Gallery</h2>
+        <div class="photo-gallery">
+            <!-- Food truck photos go here -->
+            <div class="gallery-item"><img src="food_truck_image1.jpg" alt="Food Truck"></div>
+            <div class="gallery-item"><img src="food_truck_image2.jpg" alt="Food Truck"></div>
+            <!-- Add more photos as needed -->
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2023 Your Food Truck Name. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
