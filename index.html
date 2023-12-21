@@ -52,7 +52,6 @@
 
     <!-- Photo Gallery Section -->
     <section id="gallery">
-        <h2>Photo Gallery</h2>
         <div class="photo-gallery">
             <!-- Food truck photos go here -->
             <div class="gallery-item"><img src="Images/Media.jpg" alt="Food Truck"></div>
@@ -115,6 +114,15 @@
             });
 
             orderSummary.textContent = `Total: ₹${totalCost.toFixed(2)}`;
+
+            // Highlight the total cost
+            if (totalCost > 0) {
+                orderSummary.style.color = 'green'; // You can use any color you prefer
+                orderSummary.style.fontWeight = 'bold';
+            } else {
+                orderSummary.style.color = ''; // Reset to default color
+                orderSummary.style.fontWeight = '';
+            }
         }
 
         function submitOrder() {
@@ -134,6 +142,7 @@
             alert('Order placed successfully!');
         }
     </script>
+
 
 </body>
 
