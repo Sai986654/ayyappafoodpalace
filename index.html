@@ -14,12 +14,30 @@
             text-align: center;
         }
 
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+            header h1 {
+                margin: 0;
+            }
+
+            header p {
+                margin-top: 5px;
+            }
+
         /* Add more styles for header, navigation, content, etc. */
 
         /* Style for the food menu */
         .menu-category {
             margin-top: 20px;
             cursor: pointer;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
         }
 
         .food-menu {
@@ -35,6 +53,43 @@
             border-radius: 5px;
             max-width: 200px;
             display: none; /* Initially hide all food items */
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .food-item:hover {
+                transform: scale(1.1);
+            }
+
+            .food-item.selected {
+                background-color: #5cb85c; /* Green background for selected items */
+                color: white;
+            }
+
+        /* Style for the order form */
+        #order-form {
+            margin-top: 20px;
+        }
+
+            #order-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                box-sizing: border-box;
+            }
+
+            #order-form button {
+                background-color: #5cb85c;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        #order-summary {
+            margin-top: 20px;
+            font-weight: bold;
         }
 
         /* Style for the photo gallery */
@@ -54,9 +109,14 @@
                 border-radius: 5px;
             }
 
-        /* Style for the order form */
-        #order-form {
-            margin-top: 20px;
+        /* Style for the footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 
@@ -78,46 +138,43 @@
         <div class="menu-category" onclick="toggleCategory('dosas')">Dosas</div>
         <div class="food-menu dosas">
             <!-- Animated food menu items go here -->
-            <div class="food-item">Plain Dosa - ₹50</div>
-            <div class="food-item">Onion Dosa - ₹60</div>
-            <div class="food-item">Kaaram Dosa - ₹60</div>
+            <div class="food-item" onclick="selectItem(this)">Plain Dosa - ₹50.00</div>
+            <div class="food-item" onclick="selectItem(this)">Onion Dosa - ₹60.00</div>
+            <div class="food-item" onclick="selectItem(this)">Kaaram Dosa - ₹70.00</div>
             <!-- Add more dosa items as needed -->
         </div>
 
         <div class="menu-category" onclick="toggleCategory('other')">Other</div>
         <div class="food-menu other">
             <!-- Animated food menu items go here -->
-            <div class="food-item">Item A - ₹40</div>
-            <div class="food-item">Item B - ₹40</div>
-            <div class="food-item">Item C - ₹50</div>
+            <div class="food-item" onclick="selectItem(this)">Item A - ₹80.00</div>
+            <div class="food-item" onclick="selectItem(this)">Item B - ₹90.00</div>
+            <div class="food-item" onclick="selectItem(this)">Item C - ₹100.00</div>
             <!-- Add more items as needed -->
         </div>
     </section>
 
     <!-- Location Section -->
     <section id="location">
-    <h2>Our Location</h2>
-    <p>Ayyappa Food Palace, 111, Kaza, Guntur, 522503</p>
-    <a href="https://www.google.com/maps/place/Ayyappa+Food+Palace/@16.3887023,80.5370503,17z/data=!3m1!4b1!4m6!3m5!1s0x3a35f52d32f3ee47:0x37aaadc7dc8d610b!8m2!3d16.3887023!4d80.5370503!16s%2Fg%2F11tg2ks9jb?authuser=0&entry=ttu" target="_blank">
-        View on Google Maps
-    </a>
-</section>
+        <h2>Our Location</h2>
+        <p>Ayyappa Food Palace, 111, Kaza, Guntur, 522503</p>
+        <a href="https://www.google.com/maps/place/Ayyappa+Food+Palace/@16.3887023,80.5370503,17z/data=!3m1!4b1!4m6!3m5!1s0x3a35f52d32f3ee47:0x37aaadc7dc8d610b!8m2!3d16.3887023!4d80.5370503!16s%2Fg%2F11tg2ks9jb?authuser=0&entry=ttu" target="_blank">
+            View on Google Maps
+        </a>
+    </section>
 
     <!-- Contact and Order Section -->
     <section id="contact">
         <h2>Contact Us</h2>
         <p>99999999999</p>
-        <!-- Order Form -->
-        <!--<form id="order-form" action="/process-order" method="post">
-            <label for="order">Place Your Order:</label>
-            <textarea id="order" name="order" rows="4" cols="50"></textarea>
-            <br>-->
-        <!-- Payment placeholder -->
-        <!--<label for="payment">Payment Details:</label>
-            <input type="text" id="payment" name="payment" placeholder="Enter payment details">
-            <br>
-            <button type="submit">Submit Order</button>
-        </form>-->
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order-form">
+        <h2>Your Order</h2>
+        <textarea id="order" rows="4" placeholder="Add your order details here"></textarea>
+        <button onclick="submitOrder()">Place Order</button>
+        <div id="order-summary"></div>
     </section>
 
     <!-- Photo Gallery Section -->
@@ -150,6 +207,44 @@
             itemsInCategory.forEach(item => {
                 item.style.display = 'block';
             });
+        }
+
+        function selectItem(item) {
+            item.classList.toggle('selected');
+
+            // Update order summary
+            updateOrderSummary();
+        }
+
+        function updateOrderSummary() {
+            const selectedItems = document.querySelectorAll('.food-item.selected');
+            const orderSummary = document.getElementById('order-summary');
+
+            let totalCost = 0;
+
+            selectedItems.forEach(item => {
+                const price = parseFloat(item.textContent.split(' - ₹')[1]);
+                totalCost += price;
+            });
+
+            orderSummary.textContent = `Total: ₹${totalCost.toFixed(2)}`;
+        }
+
+        function submitOrder() {
+            const selectedItems = document.querySelectorAll('.food-item.selected');
+            const orderDetails = document.getElementById('order');
+
+            let orderText = 'Selected Items:\n';
+
+            selectedItems.forEach(item => {
+                orderText += `- ${item.textContent}\n`;
+            });
+
+            orderDetails.value = orderText;
+
+            // Optionally, you can submit the order to a server or perform other actions here
+
+            alert('Order placed successfully!');
         }
     </script>
 
