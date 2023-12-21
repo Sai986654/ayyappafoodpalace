@@ -10,6 +10,7 @@ header {
     background-color: #333;
     color: white;
     padding: 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
     header h1 {
@@ -46,11 +47,13 @@ header {
     max-width: 200px;
     display: none; /* Initially hide all food items */
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
     .food-item:hover {
         transform: scale(1.1);
+        background-color: #5cb85c;
+        color: white;
     }
 
     .food-item.selected {
@@ -61,7 +64,12 @@ header {
 /* Style for the order form */
 #order-form {
     margin-top: 20px;
+    transition: margin-top 0.3s ease-in-out;
 }
+
+    #order-form:hover {
+        margin-top: 30px; /* Adjust the margin on hover */
+    }
 
     #order-form textarea {
         width: 100%;
@@ -98,7 +106,12 @@ header {
     height: 200px; /* Set a fixed height for uniformity */
     box-sizing: border-box;
     overflow: hidden; /* Ensure images don't overflow the container */
+    transition: transform 0.3s ease-in-out;
 }
+
+    .gallery-item:hover {
+        transform: scale(1.1);
+    }
 
     .gallery-item img {
         width: 100%;
@@ -107,9 +120,6 @@ header {
         border-radius: 5px;
     }
 
-
-
-
 /* Style for the footer */
 footer {
     background-color: #333;
@@ -117,4 +127,10 @@ footer {
     padding: 10px;
     bottom: 0;
     width: 100%;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+    footer:hover {
+        background-color: #555;
+        color: #ffcccb;
+    }
