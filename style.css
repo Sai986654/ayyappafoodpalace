@@ -94,19 +94,27 @@ header {
 
 .gallery-item {
     margin: 10px;
+    width: calc(50% - 20px); /* Two images in one line with margin between them */
+    height: 200px; /* Set a fixed height for uniformity */
+    box-sizing: border-box;
+    overflow: hidden; /* Ensure images don't overflow the container */
 }
 
     .gallery-item img {
-        max-width: 100%;
+        width: 100%;
+        height: 100%; /* Make sure both images have the same height */
+        object-fit: cover; /* Maintain aspect ratio and cover the container */
         border-radius: 5px;
     }
+
+
+
 
 /* Style for the footer */
 footer {
     background-color: #333;
     color: white;
     padding: 10px;
-    position: fixed;
     bottom: 0;
     width: 100%;
 }
