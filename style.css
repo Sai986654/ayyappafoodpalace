@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffcccb; /* Choose your desired background color */
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+    header h1 {
+        margin: 0;
+    }
+
+    header p {
+        margin-top: 5px;
+    }
+
+/* Add more styles for header, navigation, content, etc. */
+
+/* Style for the food menu */
+.menu-category {
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.food-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.food-item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 200px;
+    display: none; /* Initially hide all food items */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .food-item:hover {
+        transform: scale(1.1);
+    }
+
+    .food-item.selected {
+        background-color: #5cb85c; /* Green background for selected items */
+        color: white;
+    }
+
+/* Style for the order form */
+#order-form {
+    margin-top: 20px;
+}
+
+    #order-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    #order-form button {
+        background-color: #5cb85c;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+#order-summary {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Style for the photo gallery */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    margin: 10px;
+}
+
+    .gallery-item img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+/* Style for the footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
